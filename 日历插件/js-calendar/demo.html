@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/calendar.css">
+<script type="text/javascript" src="../../jquery.min.js"></script>
+	<style type="text/css">
+		.labCalendar{
+			width: 100px;
+			height: 25px
+		}
+	</style>
+</head>
+<body>
+	<p>日期:</p>
+		 <label Author="meizz" class="labCalendar" id="lab" onselectstart="return false;" style="display:inline-block; background-color: aliceblue">&nbsp;</label>
+	
+	<p>日期2:</p>
+		 <label Author="meizz" class="labCalendar" id="lab2" onselectstart="return false;" style="display:inline-block; background-color: aliceblue">&nbsp;</label>
+	<button id="but">点击</button>
+	<script type="text/javascript">
+	$('#lab').on('click',function(){
+		setday(this);
+	})
+	$('#lab2').on('click',function(){
+		setday(this);
+	})
+	$('#but').on('click',function(){
+		var lab = $('#lab');
+		console.log(lab);
+	})
+	
+	
+	</script>
+</body>
+
+	<script type="text/javascript" src="js/calendar.js"></script>
+
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>淘宝评论星级</title>
+<link href="star.css" rel="stylesheet" type="text/css">
+</head>
+<script type="text/javascript" src="star.js"></script>
+<body>
+<div id="AddDP">
+  <h5>添加点评</h5>
+  <form name="formappraisement" action="http://www.jq22.com" method="post">
+  
+    <input id="rating" name="serving" value="0" type="txt">
+    <input id="taste" name="taste" value="0" type="txt">
+    <input id="environment" name="environment" value="0" type="txt">
+    <input id="price" name="price" value="1" type="txt">
+    <div>
+      <ul class="Star">
+        <li><span class="number">*</span>服务<span class="Select"> 
+        <a onMouseOver="javascript:setProfix('star_');showStars(1,'rating');"
+         onMouseOut="javascript:setProfix('star_');clearStars('rating');" 
+         href="javascript:setProfix('star_');setStars(1,'rating');">
+         <img id="star_1" title="差(1)" src="img/icon_star_1.gif"></a>
+         
+          <a onMouseOver="javascript:setProfix('star_');showStars(2,'rating');"
+          onMouseOut="javascript:setProfix('star_');clearStars('rating');"
+           href="javascript:setProfix('star_');setStars(2,'rating');">
+           <img id="star_2" title="一般(2)" src="img/icon_star_1.gif"></a>
+           
+           <a onMouseOver="javascript:setProfix('star_');showStars(3,'rating');" 
+           onMouseOut="javascript:setProfix('star_');clearStars('rating');"
+            href="javascript:setProfix('star_');setStars(3,'rating');">
+            <img id="star_3" title="好(3)" src="img/icon_star_1.gif"></a>
+            
+            <a onMouseOver="javascript:setProfix('star_');showStars(4,'rating');" 
+            onMouseOut="javascript:setProfix('star_');clearStars('rating');" 
+            href="javascript:setProfix('star_');setStars(4,'rating');">
+            <img id="star_4" title="很好(4)" src="img/icon_star_1.gif"></a>
+            
+            <a onMouseOver="javascript:setProfix('star_');showStars(5,'rating');"
+             onMouseOut="javascript:setProfix('star_');clearStars('rating');" 
+             href="javascript:setProfix('star_');setStars(5,'rating');">
+             <img id="star_5" title="非常好(5)" src="img/icon_star_1.gif"></a></span></li>
+             
+             
+        
+      </ul>
+    </div>
+    <div style="clear:both"></div>
+  </form>
+</div>
+
+</body>
+</html>

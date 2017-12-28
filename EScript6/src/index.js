@@ -1,0 +1,1 @@
+import shim from 'system.global/shim'; shim();

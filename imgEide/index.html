@@ -1,0 +1,72 @@
+<!DOCTYPE html>  
+<html>  
+<head>    
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />  
+     <!--<script type="text/javascript" src="http://feather.aviary.com/js/feather.js"></script>-->
+    <script src="http://feather.aviary.com/imaging/v3/editor.js"></script>
+    <!--<script type="text/javascript" src="http://feather.aviary.com/imaging/v3/editor.js"></script>-->
+     <script type="text/javascript" src="../jquery.min.js"></script>  
+    <!-- Instantiate Feather -->  
+    <script type="text/javascript">  
+        var featherEditor = new Aviary.Feather({  
+            apiKey: '6f83edc4-60bf-440c-ac5a-7f67ee7f16c9',
+            apiVersion: 2,  
+            tools: ['crop', 'resize', 'orientation', 'text', 'draw', 'contrast', 'brightness', 'saturation', 'sharpness', 'enhance', 'effects', 'redeye', 'whiten', 'blemish', 'stickers'],  
+            appendTo: 'injection_site',  
+           language : 'zh_HANS',
+          noCloseButton:true,  
+            maxSize : 2000,  
+            onSave: function(imageID, newURL){  
+                // var jsonObj =DIALOG.jsonObj;  
+                var jsonObj =DIALOG.jsonObj;                  
+                DIALOG.setLoading(true);  
+                                  
+                $.post(parent.parseToURL('pic','download'),{"file_url": encodeURIComponent(newURL)},function(json){  
+                var response = $.parseJSON(json);  
+                if (response.result == "OK") {  
+                    jsonObj.callback(response.fname,response.width,response.height);  
+                }  
+                DIALOG.close();  
+            }).error(function(){  
+                DIALOG.close();  
+            });  
+                  
+            }  
+        });  
+          
+        function initialize(){  
+             var jsonObj =DIALOG.jsonObj;  
+//               var url="http://www.baidu.com/img/baidu_sylogo1.gif";  
+            var url=jsonObj.url;  
+            $("#image").load(function(){  
+                    setTimeout(function(){  
+                    featherEditor.launch({  
+                            image : 'image',  
+                            url : url  
+                    });   
+                    DIALOG.setLoading(false);  
+                },1000);  
+                  
+                }).attr('src', url);  
+              
+        }  
+          
+    </script>  
+</head>  
+<body>  
+<img id="image" src="./tmgs.jpg" style='' />
+<div id="injection_site"></div>  
+<style type='text/css'>  
+      
+    body, body.application{overflow:hidden; }  
+    #avpw_controls{  
+        -webkit-border-radius:8px;  
+         -khtml-border-radius:8px;  
+           -moz-border-radius:8px;  
+            -ms-border-radius:8px;  
+             -o-border-radius:8px;  
+                border-radius:8px;  
+    }    
+</style>  
+</body>  
+</html>      

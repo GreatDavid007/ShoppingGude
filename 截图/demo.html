@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/jquery.Jcrop.css">
+</head>
+<body>
+    <div>
+        <img src="./IMG_0023.JPG" id="element_id"  width="600" height="400">
+    </div>
+    <button id="ck">截图</button>
+</body>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/jquery.Jcrop.js"></script>
+<script>
+    $(function(){
+        $('#ck').on('click',function(){
+            $('#element_id').Jcrop({
+                onSelect:function(){
+                    console.log(123);
+                }
+            });
+        })
+    })
+</script>
+</html>

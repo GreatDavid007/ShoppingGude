@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="./picker.css">
+	<script src="./picker.js"></script>
+	<style type="text/css">
+	input{
+		width: 400px;
+		height: 50px;
+		font-size: 30px;
+	}
+
+		.js-super-picker-container .picker-cell {
+	
+  width: 18%;
+}
+.js-super-picker-container .picker-years {
+  width: 28%;
+}	
+	</style>
+</head>
+<body>
+<input type="text" class="form-control js-super-picker" value="2017年2月20日2时20分" >
+<input type="text" class="form-control js-super-picker2" value="2017年2月20日2时20分" >
+<div class="js-super-picker-container"></div>
+<div class="js-super-picker-container2"></div>
+	<script type="text/javascript">
+	const pickerstart = new Picker(document.querySelector('.js-super-picker'), {
+  container: '.js-super-picker-container',
+  format: 'YYYY年M月D日H时m分',
+  increment: {
+    minute: 30,
+  },
+  text: {
+    title: '请选择日期 / 时间',
+    cancel: '取消',
+    confirm: '确认',
+  },
+  translate(type, text) {
+    const suffixes = {
+      year: '年',
+      month: '月',
+      day: '日',
+      hour: '时',
+      minute: '分',
+    };
+
+    return Number(text) + suffixes[type];
+
+  },
+});
+console.log(pickerstart);
+
+
+
+	
+const pickerEnd =	new Picker(document.querySelector('.js-super-picker2'), {
+  container: '.js-super-picker-container2',
+  format: 'YYYY年M月D日H时m分',
+  increment: {
+    minute: 30,
+  },
+  text: {
+    title: '请选择日期 / 时间',
+    cancel: '取消',
+    confirm: '确认',
+  },
+  translate(type, text) {
+    const suffixes = {
+      year: '年',
+      month: '月',
+      day: '日',
+      hour: '时',
+      minute: '分',
+    };
+
+    return Number(text) + suffixes[type];
+  },
+});
+	</script>
+</body>
+</html>

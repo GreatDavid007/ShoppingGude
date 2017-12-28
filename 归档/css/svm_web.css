@@ -1,0 +1,50 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	list-style: none;
+}
+a{
+	cursor: pointer;
+}
+.contant li{
+	overflow: hidden;
+}
+.title{
+	display: block;
+	line-height: 30px;
+	width: 150px;
+	height: 30px;
+	background: #d4cfcf;
+	text-align: center;
+	float: left;
+	margin: 20px 0;
+}
+.info{
+	float: left;
+	margin: 20px 0;
+	padding-left: 40px;
+}
+table th,td{
+	width: 80px;
+	height: 40px;
+	text-align: center;
+	border: 1px solid black;
+}
+.btn-large{
+	margin:20px 40px;
+}
+.combobox{
+	width: 300px;
+	height: 40px;
+}
+.info .checkbox-inline{
+	margin:0 10px 10px 0;
+}
+.price{
+	width: 60px;
+}
+.chengfenbiao{
+	width: 100px;
+}

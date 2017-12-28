@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="print_report_pick_goods">
+    <div class="header" style="text-align: center;
+   ">
+                <strong style="font-size:40px;">提货单</strong>
+
+           </div>
+        <t t-set="seq" t-value="1"/>
+        <t t-set="com" t-value="0"/>
+        <div class="page" style="margin: 0 auto;">
+             <div class="massage" style="width: 800px;
+   margin: 0 auto;
+   overflow: hidden;">
+             <div class="print_time" style="float: left;
+   line-height: 40px;">打印时间：<span id="print_time"></span></div>
+             <div class="printer" style="float: left;
+   line-height: 40px;text-indent:380px;">打印人：<span id="printer"></span></div>
+        </div>
+           <div class="machine_name" style="line-height: 40px;
+   width: 800px;
+   margin: 0 auto;
+   word-break:break-all;text-align:left;">售货机名称: <span t-foreach="o.vmc_machine_list" t-as="i">
+               <span t-field="i.name"></span>
+           </span>
+           </div>
+            <table class="table" cellspacing="0" cellpadding="0" style="border-collapse: collapse;
+    margin: 0 auto;
+    width: 800px;border: 1px solid black;
+             text-align: center;" >
+                <thead>
+                    <tr>
+                        <th style="border: 1px solid black;
+             text-align: center;line-height: 36px;">商品名称</th>
+                        <th style="border: 1px solid black;
+             text-align: center;line-height: 36px;">缺货数量</th>
+                        <th style="border: 1px solid black;
+             text-align: center;line-height: 36px;">实际提货数量</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="docs.get_print_pick_goods(o)" t-as="line">
+                        <tr>
+                            <t t-if="line[1]!=0">
+                                <t t-set="seq" t-value="seq+1"/>
+                                <td style="border: 1px solid black;
+             text-align: center;line-height: 36px;"><t t-esc="line[0]"/></td>
+                                <td style="border: 1px solid black;
+             text-align: center;line-height: 36px;"><t t-esc="line[1]"/></td>
+                                <td style="border: 1px solid black;
+             text-align: center;line-height: 36px;"><t t-esc="line[2]"/></td>
+                            </t>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+            <!--<strong>合计:<t t-esc="com"/></strong>-->
+            <div style="width: 800px;
+   height: 100px;
+   margin: 0 auto;
+   margin-top:150px;
+   ">
+            <p class="warehouse_supervisor" style="float: left;
+   display: block;
+   width: 400px;
+   height: 50px;
+   line-height: 50px;text-indent:50px;" >仓库主管:</p >
+            <p class="warehouse" style="float: left;
+   display: block;
+   width: 400px;
+   height: 50px;
+   line-height: 50px;text-indent: 50px;" >仓库：</p >
+            <p class="consignee" style="float: left;
+   display: block;
+   width: 400px;
+   height: 50px;
+   line-height: 50px;text-indent: 50px;" >提货人：</p >
+            <p class="pickup_time" style="float: left;
+   display: block;
+   width: 400px;
+   height: 50px;
+   line-height: 50px;text-indent: 50px;" >提货时间：</p >
+
+            </div>
+        </div>
+        <script type="text/javascript">
+            var eles = document.getElementsByClassName('currency');
+            for (var i = 0; i &lt; eles.length; i++) {
+            var ele = eles[i];
+            var strUpper = convertCurrency(ele.innerText);
+            ele.innerText = strUpper;
+            }
+            function b64DecodeUnicode(str) {
+            return decodeURIComponent(Array.prototype.map.call(atob(str), function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            }
+
+            function convertCurrency(currencyDigits) {
+            // Constants:
+            var MAXIMUM_NUMBER = 99999999999.99;
+            // Predefine the radix characters and currency symbols for output:
+            var CN_ZERO = b64DecodeUnicode("6Zu2");
+            var CN_ONE = b64DecodeUnicode("5aO5");
+            var CN_TWO = b64DecodeUnicode("6LSw");
+            var CN_THREE = b64DecodeUnicode("5Y+B");
+            var CN_FOUR = b64DecodeUnicode("6IKG");
+            var CN_FIVE = b64DecodeUnicode("5LyN");
+            var CN_SIX = b64DecodeUnicode("6ZmG");
+            var CN_SEVEN = b64DecodeUnicode("5p+S");
+            var CN_EIGHT = b64DecodeUnicode("5o2M");
+            var CN_NINE = b64DecodeUnicode("546W");
+            var CN_TEN = b64DecodeUnicode("5ou+");
+            var CN_HUNDRED = b64DecodeUnicode("5L2w");
+            var CN_THOUSAND = b64DecodeUnicode("5Luf");
+            var CN_TEN_THOUSAND = b64DecodeUnicode("5LiH");
+            var CN_HUNDRED_MILLION = b64DecodeUnicode("5Lq/");
+            var CN_SYMBOL = b64DecodeUnicode("5Lq65rCR5biB");
+            var CN_DOLLAR = b64DecodeUnicode("5YWD");
+            var CN_TEN_CENT = b64DecodeUnicode("6KeS");
+            var CN_CENT = b64DecodeUnicode("5YiG");
+            var CN_INTEGER = b64DecodeUnicode("5pW0");
+
+            // Variables:
+            var integral; // Represent integral part of digit number.
+            var decimal; // Represent decimal part of digit number.
+            var outputCharacters; // The output result.
+            var parts;
+            var digits, radices, bigRadices, decimals;
+            var zeroCount;
+            var i, p, d;
+            var quotient, modulus;
+
+            // Validate input string:
+            currencyDigits = currencyDigits.toString();
+            if (currencyDigits == "") {
+            alert("Empty input!");
+            return "";
+            }
+            if (currencyDigits.match(/[^,.\d]/) != null) {
+            alert("Invalid characters in the input string!");
+            return "";
+            }
+            if ((currencyDigits).match(/^((\d{1,3}(,\d{3})*(.((\d{3},)*\d{1,3}))?)|(\d+(.\d+)?))$/) == null) {
+            alert("Illegal format of digit number!");
+            return "";
+            }
+
+            // Normalize the format of input digits:
+            currencyDigits = currencyDigits.replace(/,/g, ""); // Remove comma delimiters.
+            currencyDigits = currencyDigits.replace(/^0+/, ""); // Trim zeros at the beginning.
+            // Assert the number is not greater than the maximum number.
+            if (Number(currencyDigits) > MAXIMUM_NUMBER) {
+            alert("Too large a number to convert!");
+            return "";
+            }
+
+            // Process the coversion from currency digits to characters:
+            // Separate integral and decimal parts before processing coversion:
+            parts = currencyDigits.split(".");
+            if (parts.length > 1) {
+            integral = parts[0];
+            decimal = parts[1];
+            // Cut down redundant decimal digits that are after the second.
+            decimal = decimal.substr(0, 2);
+            } else {
+            integral = parts[0];
+            decimal = "";
+            }
+            // Prepare the characters corresponding to the digits:
+            digits = new Array(CN_ZERO, CN_ONE, CN_TWO, CN_THREE, CN_FOUR, CN_FIVE, CN_SIX, CN_SEVEN, CN_EIGHT,
+            CN_NINE);
+            radices = new Array("", CN_TEN, CN_HUNDRED, CN_THOUSAND);
+            bigRadices = new Array("", CN_TEN_THOUSAND, CN_HUNDRED_MILLION);
+            decimals = new Array(CN_TEN_CENT, CN_CENT);
+            // Start processing:
+            outputCharacters = "";
+            // Process integral part if it is larger than 0:
+            if (Number(integral) > 0) {
+            zeroCount = 0;
+            for (i = 0; i &lt; integral.length; i++) {
+            p = integral.length - i - 1;
+            d = integral.substr(i, 1);
+            quotient = p / 4;
+            modulus = p % 4;
+            if (d == "0") {
+            zeroCount++;
+            } else {
+            if (zeroCount > 0) {
+            outputCharacters += digits[0];
+            }
+            zeroCount = 0;
+            outputCharacters += digits[Number(d)] + radices[modulus];
+            }
+            if (modulus == 0 &amp;&amp; zeroCount &lt; 4) {
+            outputCharacters += bigRadices[quotient];
+            }
+            }
+            outputCharacters += CN_DOLLAR;
+            }
+            // Process decimal part if there is:
+            if (decimal != "") {
+            for (i = 0; i &lt; decimal.length; i++) {
+            d = decimal.substr(i, 1);
+            if (d != "0") {
+            outputCharacters += digits[Number(d)] + decimals[i];
+            }
+            }
+            }
+            // Confirm and return the final output string:
+            if (outputCharacters == "") {
+            outputCharacters = CN_ZERO + CN_DOLLAR;
+            }
+            if (decimal == "") {
+            outputCharacters += CN_INTEGER;
+            }
+            outputCharacters = CN_SYMBOL + outputCharacters;
+            return outputCharacters;
+            }
+        </script>
+        <script>
+             window.onload = function() {
+                    var print_time = document.getElementById("print_time");
+                    setInterval(function() {
+                        var time = new Date();
+                        // 程序计时的月从0开始取值后+1
+                        var m = time.getMonth() + 1;
+                         var t = time.getFullYear() + "-" + m + "-"
+                                + time.getDate() + " " + time.getHours() + ":"
+                                + time.getMinutes();
+                                print_time.innerHTML = t;
+                         }, 1000);
+                 };
+        </script>
+    </template>
+
+    <template id="print_pick_goods_order">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="hollywant_vmc.print_report_pick_goods"/>
+        </t>
+    </template>
+</odoo>

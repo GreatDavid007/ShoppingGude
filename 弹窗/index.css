@@ -1,0 +1,29 @@
+#mb_msg{
+	padding: 3rem .5rem;
+	text-align: center;
+	font-size: 2rem;
+}
+#mb_btnbox{
+	height: 4rem;
+}
+#mb_btn_ok{
+	font-size: 2rem;
+	line-height: 4rem;
+	width: 50%;
+	border:1px solid #ccc;
+	border-left: none;
+	border-bottom: none;
+	background-color: #fff;
+	border-radius: 0 0 0 25px;
+}
+#mb_btn_no{
+	font-size: 2rem;
+	line-height: 4rem;
+	width: 50%;
+	border:1px solid #ccc;
+	border-left: none;
+	border-right: none;
+	border-bottom: none;
+	background-color: #fff;
+	border-radius: 0 0 25px 0;
+}

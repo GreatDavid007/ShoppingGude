@@ -1,0 +1,8 @@
+body{
+--bar: red;
+}
+.box{
+    background-color: var(--bar,blue);
+    width: 100px;
+    height: 100px;
+}

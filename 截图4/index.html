@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/jquery.Jcrop.min.css">
+    <title>Document</title>
+    <style>
+       
+       .box{
+            /* display: none;   */
+            width:100%;
+		     height:100%;  
+		     position: fixed;   /* 使用绝对定位或固定定位  */
+		     left: 0px;    
+		     top: 0px;
+		     text-align:center;
+		     z-index: 1000;
+		     background-color: #333; 
+		     opacity: 0.7;   /* 背景半透明 */
+       }
+       .model{   
+		     position: absolute;   /*使用绝对定位或固定定位 */
+            left: 50%;    
+		     top: 50%;
+            width: 60%;
+            height: 80%;
+		    padding: 20px 50px;
+             transform: translate(-50%,-50%);
+		     text-align:center;
+		     z-index: 1000;
+		     background-color: #ccc;  
+		     /* opacity: 1;   背景半透明 */
+        }
+       #appen{
+           /* position: absolute;
+           left: 50%;
+           top: 50%;
+           transform: translateX(-50%); */
+           /* visibility: hidden; */
+       }
+    </style>
+</head>
+<body>
+    <div>asldfjlasjdflajsdfas
+        <h1 id="tittle">asdfasdfasd</h1>
+        <p>asdjflasjdflkas  </p>
+    </div>
+    <button onclick="overlay()">截图</button>
+    <!-- <a href="#" onclick="pick()">截图</a> -->
+    
+
+    <div id="box" class="box" style="display:none">
+        <div class="model">
+                <h1>编辑截图</h1>
+                <a href="#" onclick="overlay()">关闭</a>
+                <a href="#" onclick="pick()">截图</a>
+
+                <form action="http://67.216.202.191:8069/demos/crop.php" method="post" onsubmit="return checkCoords();">
+                    <input type="hidden" id="x" name="x" />
+                    <input type="hidden" id="y" name="y" />
+                    <input type="hidden" id="w" name="w" />
+                    <input type="hidden" id="h" name="h" />
+                    <input type="submit" value="Crop Image" class="btn btn-large btn-inverse" />
+                </form>
+                <div id="appen"></div>
+
+               
+        </div>
+       
+    </div>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery.Jcrop.js"></script>
+    <script src="./html2canvas.js"></script>
+    <script>
+          function convertCanvasToImage(canvas) {
+                    var image = new Image();
+                    image.src = canvas.toDataURL("image/png");
+                    return image;
+                    
+                }
+
+
+        function overlay(){
+            
+                // $('#box').css('display','block');
+                $('#box').toggle({});
+                
+                var appen = document.getElementById('appen');
+                html2canvas(document.body, {
+                onrendered: function(canvas) {
+                    // appen.appendChild(canvas);
+                    var img = convertCanvasToImage(canvas);
+                    console.log(img);
+                    appen.appendChild(img);
+                },
+                width: 600,
+            });
+
+            
+            }
+            function pick(){
+                var jcropApi;
+                $('#appen').Jcrop({
+                    bgColor:'#ccc',
+                    touchSupport: null,   //	支持触摸事件
+                    addClass:'test',
+                    onSelect:function(c){
+                        console.log(c)
+                        $('#x').val(c.x);
+                        $('#y').val(c.y);
+                        $('#w').val(c.w);
+                        $('#h').val(c.h);
+                    }
+                },function() {
+                   return jcropApi = this;
+                });
+                
+                // jcropApi.onSelect()
+
+            }
+
+            // function updateCoords(c)
+            //     {
+            //         $('#x').val(c.x);
+            //         $('#y').val(c.y);
+            //         $('#w').val(c.w);
+            //         $('#h').val(c.h);
+            //         console.log(c);
+            //     };
+
+            // function checkCoords()
+            //     {
+            //         if (parseInt($('#w').val())) return true;
+            //         alert('Please select a crop region then press submit.');
+            //         return false;
+            //     };
+            
+            
+            
+    </script>
+</body>
+</html>

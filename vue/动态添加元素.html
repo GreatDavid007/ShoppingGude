@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+    <button v-on:click="addNewElement">Add Element</button> 
+    <br>
+</div>
+<script src="../jquery.min.js"></script>
+<script src="./vue.js"></script>
+<script type="text/javascript">
+   // var res = Vue.compile('<button v-on:click="test">Test</button>');
+
+	new Vue({
+    el: '#app',
+    data: {
+        sampleElement: '<button v-on:click="test">Test</button>'
+    },
+  //    render: res.render,
+  // staticRenderFns: res.staticRenderFns,	
+    methods:{
+        addNewElement: function(){
+			// var component = new this.$mount()
+          var element = $('#app').append(this.sampleElement);
+    	  	// document.getElementById('app').appendChild(this.sampleElement);
+
+           console.log(element);
+        },
+        test: function(){
+           alert('Test');
+        }
+    }
+});
+
+// ==========
+// var MyComponent = Vue.extend({
+// 	   //  data: {
+//          // sampleElement: '<button v-on:click="test">Test</button>',
+//     // },
+//   template: '<button v-on:click="test">Test</button>',
+//   methods : {
+//   	     //    addNewElement: function(){
+//         //    var element = $('#app').append(this.template);
+//         //     compile the new content so that vue can read it 
+//         //    // this.$compile(element.get(0));
+
+//         //    console.log(element);
+//         // },
+//     test : function() {
+//       alert('Test');
+//     }
+//   }
+// })
+ 
+// var component = new MyComponent().$mount()
+// document.getElementById('app').appendChild(component.$el)
+</script>
+</body>
+</html>

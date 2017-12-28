@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="vue.js"></script>
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<p>123</p>
+	</div>
+	<script type="x-template" id="tpl">
+	<div class="wrapper">
+		<div class="tpl">
+		<p>哈哈啊哈哈啊啊啊的</p>
+		</div>
+		<div class="tpl">
+		<p>好啦啦啦阿拉啦</p>
+		</div>
+		</div>
+	</script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#app',
+			template: '#tpl'
+		})
+	</script>
+	
+</body>
+</html>

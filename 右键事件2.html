@@ -1,0 +1,135 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> JQuery右键菜单 </title>
+        <link rel="stylesheet" type="text/css" href="./bootstrap-3.3.7/dist/css/bootstrap.css">
+        <script  src="./jquery.min.js"></script>
+        <script src="./jquery.contextmenu.js"></script>
+        <script src="./bootstrap-3.3.7/dist/js/bootstrap.js"></script>
+        <style type="text/css">
+            .bgc{
+                width: 100%;    
+                height: 100%;
+                position: fixed;
+                left: 0;
+                top: 0;
+                background-color: rgba(255, 255, 200, 0.6); 
+            }
+            .box{
+                width: 400px;
+                height: 200px;
+                background-color: rgba(0, 0, 0, 1.0);
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .demo1{
+                list-style: none;
+                line-height: 30px;
+                background-color: #f0f0f0;
+                border-bottom: 1px solid #ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <span class="demo1" style="color:green;">右键点此</span> -->
+        <ul>
+            <li class="demo1" id="0">右键点此</li>
+            <!-- <ul>
+                <li>哈哈</li>
+            </ul> -->
+            <li class="demo1" id="1">右键点此</li>
+            <li class="demo1" id="2">右键点此</li>
+        </ul>
+
+
+
+    <!--右键菜单的源-->
+     <div class="contextMenu" id="myMenu1">
+      <ul>
+        <li id="open"> 编辑</li>
+        <li id="email"> 添加</li>
+      </ul>
+    </div>
+   <!--  <div class="contextMenu" id="myMenu2">
+        <ul>
+          <li id="item_1">选项一</li>
+          <li id="item_2">选项二</li>
+          <li id="item_3">选项三</li>
+          <li id="item_4">选项四</li>
+        </ul>
+   </div> -->
+     <!-- <div class="contextMenu" id="myMenu3">
+         <ul>
+          <li id="item_1">csdn</li>
+          <li id="item_2">javaeye</li>
+          <li id="item_3">itpub</li>
+        </ul>
+    </div> -->
+   <!--  <div class="bgc" style="display: none">
+    <div style="display: none" id="box" class="box">
+        
+    </div>
+    </div> -->
+
+   <div class="modal fade" tabindex="-1" role="dialog" id="mymodel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <input type="text" value="" id="one">
+        <input type="text" name="" id="two">
+        <input type="text" name="" id="three">
+        <input type="text" name="" id="four">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" id="btn">保存</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+ </body>
+ <script>
+ var id;
+    //所有class为demo1的span标签都会绑定此右键菜单
+     $('.demo1').contextMenu('myMenu1', 
+     {
+          bindings: 
+          {
+            'open': function(t) {
+              // alert('Trigger was '+t.id+'\nAction was Open');
+              // $('.bgc').show();
+              // $('#box').show();
+              id = $(t).attr("id"); 
+                console.log(id);
+            $('#mymodel').modal('show');
+           
+             
+              
+
+              
+            },
+            'email': function(t) {
+
+              $('#mymodel').modal('show');
+              // id = $(t).attr("id");
+            }
+          }
+    });
+
+    // $('#btn').on('click',function (id) {
+        
+
+    // })
+
+ 
+
+    
+ </script>
+</html>

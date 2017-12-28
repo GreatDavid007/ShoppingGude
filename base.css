@@ -1,0 +1,134 @@
+body,
+button,
+select,
+textarea,
+input,
+label,
+option,
+fieldset,
+legend,
+p{
+	font-family: 微软雅黑E\8F6F\96C5\9ED1, Tahoma, Verdana;
+	font-size: 16px;
+	line-height: 18px;
+	color: #666;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+legend,
+input,
+textarea,
+button,
+p,
+blockquote,
+th,
+td {
+	margin: 0;
+	padding: 0;
+}
+
+textarea {
+	resize: none
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal
+	} 
+
+a,
+img {
+	border: 0;
+}
+
+a {
+	color: #666;
+	text-decoration: none;
+}
+a:hover {
+	color: #da7726;
+	text-decoration: none;
+}
+li {
+	list-style-type: none;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:normal} 
+
+.clearfix {
+	*zoom: 1
+}
+
+.clearfix:after {
+	display: block;
+	visibility: hidden; 
+	clear: both;
+	height: 0;
+	content: '.';
+	font-size: 0
+}
+
+iframe {
+	border: none;
+}
+.w {
+	width: 1200px;
+	margin: 0 auto;
+}
+.container {
+	padding: 0;
+}
+
+/*头部开始*/
+.top {
+	height: 400px;
+	background: #6cb4e4;
+	
+}
+.title {
+	text-align: center;
+	font-size: 40px;
+	font-family: "华文新魏";
+	color: #fff;
+	position: fixed;
+	height: 60px;
+	line-height: 60px;
+	width: 100%;
+}
+
+/*底部*/
+.nj-footer {
+	height: 40px;
+	background: #e8e8e8;
+	padding-top: 6px;
+}
+.nj-footer p {
+	text-align: center;
+	font-size: 12px;
+}
+
+
+
+		

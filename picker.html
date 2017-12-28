@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="./picker.css">
+	<script src="./zepto.min.js"></script>
+	<script src="./picker.min.js"></script>
+	<style type="text/css">
+		input{
+			border: 1px solid red;
+			width: 400px;
+		}
+	</style>
+</head>
+<body>
+<input type="text" id="name1" value="" class="qingjia_time1">
+<input type="text" id="name2" value="" class="qingjia_time2">
+
+<script type="text/javascript">
+                var data = new Date();
+                var data1 = [
+                {
+                    text: '01时',
+                    value: 01
+                }, {
+                    text: '02时',
+                    value: 02
+                }, {
+                    text: '03时',
+                    value: 03
+                }, {
+                    text: '04时',
+                    value: 04
+                }, {
+                    text: '05时',
+                    value: 05
+                }, {
+                    text: '06时',
+                    value: 06
+                }, {
+                    text: '07时',
+                    value: 07
+                }, {
+                    text: '08时',
+                    value: 08
+                }, {
+                    text: '09时',
+                    value: 09
+                }, {
+                    text: '10时',
+                    value: 10
+                }, {
+                    text: '11时',
+                    value: 11
+                }, {
+                    text: '12时',
+                    value: 12
+                }, {
+                    text: '13时',
+                    value: 13
+                }, {
+                    text: '14时',
+                    value: 14
+                }, {
+                    text: '15时',
+                    value: 15
+                }, {
+                    text: '16时',
+                    value: 16
+                }, {
+                    text: '17时',
+                    value: 17
+                }, {
+                    text: '18时',
+                    value: 18
+                }, {
+                    text: '19时',
+                    value: 19
+                }, {
+                    text: '20时',
+                    value: 20
+                }, {
+                    text: '21时',
+                    value: 21
+                }, {
+                    text: '22时',
+                    value: 22
+                }, {
+                    text: '23时',
+                    value: 23
+                }, {
+                    text: '24时',
+                    value: 24
+                }
+
+                ];
+
+                var data2 = [
+                {
+                    text: '0分       ',
+                    value: 00
+                },
+                {
+                    text: '30分       ',
+                    value: 30
+                }
+                ];
+
+                var picker = new Picker({
+                    data: [data,data1, data2],
+                    format: 'YYYY-MM-DD HH:mm:ss.SSS',
+                    selectedIndex: [0, 1, 2],
+                    title: '请选择开始时间'
+                });
+
+                var pickerEnd = new Picker({
+                    data: [data1, data2],
+                    selectedIndex: [0, 1, 2],
+                    title: '请选择结束时间 '
+                });
+
+                picker.on('picker.select', function (selectedVal, selectedIndex) {
+                   
+
+        })
+
+                pickerEnd.on('picker.select', function (selectedVal, selectedIndex) {
+                  
+                  
+                })
+
+                picker.on('picker.change', function (index, selectedIndex) {
+                   console.log(index);
+                    console.log(selectedIndex);
+                });
+
+                picker.on('picker.valuechange', function (selectedVal, selectedIndex) {
+                    console.log(selectedVal);
+                    console.log(selectedIndex);
+                });
+                  $qingjiaStart.on("click",function(e){
+
+                    picker.show();
+                });
+                $qingjiaEnd.on("click",function(e){
+
+                  
+                   pickerEnd.show();
+               })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Live Cropping Demo</title>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+  <script src="./jquery-3.2.0.js"></script>
+    <script src="bootstrap.min.js"></script>
+  <script src="./jquery.Jcrop.min.js"></script>
+    <script src="html2canvas.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+  <!--<link rel="stylesheet" href="./main.css" type="text/css" />-->
+  <link rel="stylesheet" href="./demos.css" type="text/css" />
+  <link rel="stylesheet" href="./css/jquery.Jcrop.css" type="text/css" />
+
+
+<style type="text/css">
+  #target {
+    background-color: #ccc;
+    width: 500px;
+    height: 330px;
+    font-size: 24px;
+    display: block;
+  }
+  @media (min-width: 768px) {
+      .modal-dialog {
+          width: auto;
+          margin: 30px auto;
+      }
+  }
+</style>
+
+</head>
+<body>
+
+<div class="container">
+<div class="row">
+<div class="span12">
+<div class="jc-demo-box">
+
+<div class="page-header">
+<ul class="breadcrumb first">
+  <li><a href="../index.html">Jcrop</a> <span class="divider">/</span></li>
+  <li><a href="../index.html">Demos</a> <span class="divider">/</span></li>
+  <li class="active">Live Demo (Requires PHP)</li>
+</ul>
+<h1>Server-based Cropping Behavior</h1>
+</div>
+
+	    <!--<button id="but">点击截屏</button>-->
+		<!-- This is the image we're attaching Jcrop to -->
+		<img src="./pool.jpg" id="cropbox" />
+
+		<!-- This is the form that our event handler fills -->
+
+
+		<p>
+			<b>An example server-side crop script.</b> Hidden form values
+			are set when a selection is made. If you press the <i>Crop Image</i>
+			button, the form will be submitted and a 150x150 thumbnail will be
+			dumped to the browser. Try it!
+		</p>
+
+
+    <!-- Button trigger modal -->
+    <input type="button" id="but" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" value="点击截屏">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" data-keyboard="false" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body" id="appen">
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" id="targets" type="submit">点击编辑</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+
+                    <form action="crop.php" method="post" onsubmit="return checkCoords();">
+                        <input type="hidden" id="x" name="x" />
+                        <input type="hidden" id="y" name="y" />
+                        <input type="hidden" id="w" name="w" />
+                        <input type="hidden" id="h" name="h" />
+                        <input type="submit" value="Crop Image" class="btn btn-large btn-inverse" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	</div>
+	</div>
+	</div>
+    </div>
+    
+
+    <script type="text/javascript">
+        
+        $(function(){
+            function convertCanvasToImage(canvas) {
+                var image = new Image();
+                image.src = canvas.toDataURL("image/png");
+                image.id = 'image';
+                return image;
+
+            }
+
+
+            $('#myModal').on('show.bs.modal',function () {
+
+
+               var appen = document.getElementById('appen');
+                html2canvas(document.body, {
+                    onrendered: function(canvas) {
+//                         appen.appendChild(canvas);
+                        var img = convertCanvasToImage(canvas);
+                        console.log(img);
+                       appen.appendChild(img);
+
+
+//                        var url = canvas.toDataURL();
+//                        //以下代码为下载此图片功能
+//                        var triggerDownload = $("<a>").attr("href", url).attr("download", "异常信息.png").appendTo("body");
+//                        triggerDownload[0].click();
+//                        triggerDownload.remove();
+
+                    }
+
+                })
+
+            });
+
+             $('#targets').on('click',function () {
+                 $('#image').Jcrop({
+                     aspectRatio: 0,
+                     onSelect: updateCoords,
+                     allowResize: true,
+                     bgColor: '#ccc',
+                     keySupport: true,
+                     touchSupport: null
+
+                 },function () {
+                     jcropApi = this;
+                 });
+             });
+
+            $('#myModal').on('hide.bs.modal',function () {
+                $('#image').remove();
+                $('.jcrop-holder').remove();
+//                jcropApi.release();
+            })
+        })
+
+        
+          function updateCoords(c)
+          {
+            $('#x').val(c.x);
+            $('#y').val(c.y);
+            $('#w').val(c.w);
+            $('#h').val(c.h);
+            console.log(c);
+          }
+        
+          function checkCoords()
+          {
+            if (parseInt($('#w').val())) return true;
+            alert('Please select a crop region then press submit.');
+            return false;
+          };
+        
+        </script>
+	</body>
+
+</html>

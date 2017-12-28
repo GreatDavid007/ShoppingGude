@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+	</title>
+	<link rel="stylesheet" type="text/css" href="M_select.css">
+</head>
+<body>
+	<div style="width: 150px;">
+		<select class="aaa">
+			<option value="0001" disabled="disabled">--选择大小--</option>
+			<option value="0002">大的时刻</option>
+			<option value="0002">大的时刻</option>
+			<option value="0002">大的时刻</option>
+			<option value="0002">大的时刻</option>
+			<option value="0002">大的时刻</option>
+			<option value="0002">大的时刻</option>
+			<option value="0002">大的时刻</option>
+			<option value="0002">大的时刻</option>
+			<option value="0002">大的时刻</option>
+			<option value="0002">大的时刻</option>
+			<option value="0003">中</option>
+		</select>
+
+	</div>
+
+	<div style="width: 300px;">
+		<select class="bbb">
+			<option value="0003" disabled="disabled">3</option>
+			<option value="0004">4</option>
+			<option value="0005">5</option>
+		</select>
+	</div>
+
+	<script type="text/javascript" src="./js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="M_select.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		
+		$(".aaa").M_select({
+			// "sel_Bcolor":"#ddd",
+			"Hcolor":"orange",
+			"lineHeight":2,
+			"ico":"5",
+			"fontSize":"14px",
+			"selected":"0003",
+			"border_radius":"8px",
+			// "Img2":"up1.png"
+			// Succee:function(){
+			// 	console.log(0);
+			// }
+
+		});
+		$(".bbb").M_select({
+			// "sel_Bcolor":"#ddd",
+			"Hcolor":"orange",
+			"lineHeight":2,
+			// "Img":"up4.png",
+			// "Img2":"up1.png",
+			"fontSize":"14px",
+			"selected":"0003",
+			"border_radius":"8px",
+		});
+	});
+	</script>
+</body>
+</html>

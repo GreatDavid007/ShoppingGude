@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="./jquery-3.2.0.js"></script>
+</head>
+<body>
+
+	<table style="border:1px solid #ccc" border="1">
+		<thead>
+			<tr>
+				<th>学生姓名</th>
+				<th>学生年龄</th>
+				<th>学生编号</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody id="th">
+			
+		</tbody>
+		
+	</table>
+	<script type="text/javascript">
+	// var url = 'http://10.0.33.244:9763/StudentManagement-1.0.0/services/student_management_service/student/add/addStudent?'+ 'id=30'
+	// 	var html;
+	// 	$.ajax({
+	// 		type:"post",
+	// 		url:'http://10.0.35.54:9763/com.hollywant.website.api/customerinfo/add/addCustomerInfo',
+	// 		dataType: "json",
+	// 		// contentType: 'application/json',
+	// 		data:{
+	// 			name:'小米',
+	// 			phone:'18020222013',
+	// 			userType:'business'
+	// 		},
+	// 		success:function(data){
+	// 			console.log(data);
+	// 			// var test=data.Student;
+   	// // 			console.log(test);
+	// 			//  for(var i = 0;i < test.length;i++){
+	// 			// 	html += '<tr>',
+	// 			// 	html+='<td>'+test[i].name+'</td>',
+	// 			// 	html+='<td>'+test[i].age+'</td>',
+	// 			// 	html+='<td>'+test[i].id+'</td>',
+	// 			// 	html+='</tr>'
+	// 			}
+	// 			 // console.log(html);
+  	// 		// 	 $('#th').html(html);
+
+	// 		// }
+	// 	})
+		
+		$.ajax({
+			type:'get',
+			url:'http://10.0.34.158:8280/api-application-registration/register',
+			dataType:'jsonp',
+			jsonp: "callback",
+			contentType: 'application/json',
+			Accept:'application/json',
+			Authorization:'Basic d2Vic2l0ZS94aW9uZzoxMjM0NTY=',
+			data:{
+					"applicationName":"device_management_111",
+					"consumerKey":null,
+					"consumerSecret":null,
+					"tags":["device_management"],
+					"isAllowedToAllDomains":false,
+					"isMappingAnExistingOAuthApp":false,
+					"allowedToAllDomains":false,
+					"mappingAnExistingOAuApp":false
+				},
+				success:function(data){
+					console.log(data);
+				}
+
+		})
+
+	</script>
+</body>
+</html>

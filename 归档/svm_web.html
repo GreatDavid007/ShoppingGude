@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/svm_web.css"/>
+	<body>
+		<div class="main">
+			<ul class="container-fluid">
+				<li>
+					<span class="title col-sm-2" style="color: red;">名称</span>
+					<div class="info col-sm-10" id="name">
+						<input type="" name="" id="" value="" style="width: 300px;height: 40px;"/>
+						<span></span>
+					</div>
+				</li>
+				<li>
+					<span class="title  col-sm-2" style="color: red;">品牌</span>
+					<div class="info  col-sm-10" id="brand">
+						<select class="combobox">
+					  		<option>旺旺</option>
+						</select>
+					</div>					
+				</li>
+				<li>
+					<span class="title col-sm-2" style="color: red;">内容类别</span>
+					<div class="info  col-sm-10" id="type">
+						<select class="combobox">
+						  	<option>米果类</option>
+						  	<option>运动饮料</option>
+						</select>
+					</div>
+				</li>
+				<li>
+					<span class="title col-sm-2" style="color: red;">包装</span>
+					<div class="info col-sm-10" id="pack">						
+						<label class="checkbox-inline">
+						 <input type="checkbox" id="inlineCheckbox1" value="瓶装">瓶装
+						</label>
+						<label class="checkbox-inline">
+						 <input type="checkbox" id="inlineCheckbox2" value="灌装"> 灌装
+						</label>
+						<label class="checkbox-inline">
+						 <input type="checkbox" id="inlineCheckbox3" value="袋装"> 袋装
+						</label>
+						<label class="checkbox-inline">
+						 <input type="checkbox" id="inlineCheckbox3" value="盒装">盒装
+						</label>
+						<label class="checkbox-inline">
+						 <input type="checkbox" id="inlineCheckbox3" value="杯装">杯装
+						</label>	
+					</div>
+				</li>
+				<li>
+					<span class="title col-sm-2">容积</span>
+					<div class="info  col-sm-10" id="volume">						
+						<label class="checkbox-inline">
+						 	<input type="checkbox" id="inlineCheckbox1" value="245ml">245ml
+						</label>
+						<label class="checkbox-inline">
+						 	<input type="checkbox" id="inlineCheckbox2" value="350ml"> 350ml
+						</label>
+						<label class="checkbox-inline">
+						 	<input type="checkbox" id="inlineCheckbox3" value="450ml"> 450ml
+						</label>
+						<label class="checkbox-inline">
+						 	<input type="checkbox" id="inlineCheckbox3" value="250ml">250ml
+						</label>
+						<label class="checkbox-inline">
+						 	<input type="checkbox" id="inlineCheckbox3" value="125ml">125ml
+						</label>		
+						<label class="checkbox-inline">
+						 	<input type="checkbox" id="inlineCheckbox3" value="300ml">300ml
+						</label>	
+					</div>
+				</li>
+				<li>
+					<span class="title col-sm-2">重量</span>
+					<div class="info col-sm-10" id="weight">						
+						<label class="checkbox-inline">
+						 	<input type="checkbox" id="inlineCheckbox1" value="106g">106g
+						</label>
+						<label class="checkbox-inline">
+						 	<input type="checkbox" id="inlineCheckbox2" value="48g"> 48g
+						</label>
+						<label class="checkbox-inline">
+						 	<input type="checkbox" id="inlineCheckbox3" value="150g"> 150g
+						</label>
+						<label class="checkbox-inline">
+						 	<input type="checkbox" id="inlineCheckbox3" value="100g">100g
+						</label>
+						<label class="checkbox-inline">
+						 	<input type="checkbox" id="inlineCheckbox3" value="70g">70g
+						</label>		
+					</div>
+				</li>
+				<li>
+					<span class="title col-sm-2" style="color: red;">口味</span>
+					<div class="info col-sm-10" id="taste">						
+						<label class="checkbox-inline">
+						 	<input type="checkbox" id="inlineCheckbox1" value="原味">原味
+						</label>
+						<label class="checkbox-inline">
+						 	<input type="checkbox" id="inlineCheckbox2" value="果汁味"> 果汁味
+						</label>
+						<label class="checkbox-inline">
+						 	<input type="checkbox" id="inlineCheckbox3" value="苹果味"> 苹果味
+						</label>
+						<label class="checkbox-inline">
+						 	<input type="checkbox" id="inlineCheckbox3" value="葡萄味">葡萄味
+						</label>
+						<label class="checkbox-inline">
+						 	<input type="checkbox" id="inlineCheckbox3" value="可乐味">可乐味
+						</label>	
+						<label class="checkbox-inline">
+						 	<input type="checkbox" id="inlineCheckbox3" value="海苔花生">海苔花生
+						</label>	
+						<label class="checkbox-inline">
+						 	<input type="checkbox" id="inlineCheckbox3" value="麻辣花生">麻辣花生
+						</label>	
+					</div>
+				</li>
+				<li>
+					<span class="title col-sm-2" style="color: red;">售货机展示类别</span>
+					<div class="info col-sm-10" id="">						
+						<select class="combobox">
+						  <option>缤纷小食</option>
+						  <option>酣畅饮品</option>
+						  <option>其他</option>
+						</select>
+					</div>
+				</li>
+				<li>
+					<span class="title col-sm-2" style="color: red;">产品属性</span>
+					<div class="info col-sm-10" id="tableDiv">
+						<table border="" cellspacing="" cellpadding="" id="table">
+							<tr>
+								<th>包装</th>
+								<th>容积</th>
+								<th>口味</th>
+								<th>是否激活</th>
+								<th>条形码</th>
+								<th>商品编码</th>
+								<th>营养成分表</th>
+								<th>标价</th>
+								<th>图片</th>
+							</tr>
+							<!--<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td><input type="checkbox" name="" id="" value="" /></td>
+								<td></td>
+								<td></td>
+								<td><a href="#">添加</a></td>
+								<td></td>
+								<td><input type="file" /></td>
+							</tr>-->
+						</table>
+					</div>
+				</li>
+			</ul>
+			<p style="color: red;padding-left: 50px;">注：红色字段为必填必选项</p>
+			<button class="btn btn-large btn-primary" style="width: 100px;">保存</button>
+			<button class="btn btn-large btn-primary"style="width: 100px;background-color:#999999;border: none;">取消</button>
+		</div>
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/svm_web.js"></script>
+	</body>
+</html>
+
+
+
+

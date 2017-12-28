@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a href="#" onclick="return launchEditor('editableimage1','https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503553701305&di=814e30a0fac1f56c3c5a5027f8de784b&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dshijue1%252C0%252C0%252C294%252C40%2Fsign%3Dc836651ec33d70cf58f7a24e90b5bb75%2F3ac79f3df8dcd1000da9cf06788b4710b9122fdb.jpg');">Edit!</a>
+
+<!-- original line of HTML here: -->
+<img id="editableimage1" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503553701305&di=814e30a0fac1f56c3c5a5027f8de784b&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dshijue1%252C0%252C0%252C294%252C40%2Fsign%3Dc836651ec33d70cf58f7a24e90b5bb75%2F3ac79f3df8dcd1000da9cf06788b4710b9122fdb.jpg"/>
+
+<!-- Instantiate the widget -->
+<script type="text/javascript" src="http://feather.aviary.com/imaging/v3/editor.js"></script>
+
+<script type="text/javascript">
+
+    var featherEditor = new Aviary.Feather({
+        apiKey: '6f83edc4-60bf-440c-ac5a-7f67ee7f16c9',
+        language: 'zh_HANS',
+        tools:['crop','draw','text','blemish'],
+        Accepts:'jpg',
+        onSave: function(imageID, newURL) {
+            var img = document.getElementById(imageID);
+            img.src = newURL;
+            console.log(newURL);
+            console.log(imageID);
+
+//            window.location.href = newURL;
+            var elemIF = document.createElement("iframe");
+            elemIF.src = newURL;
+            elemIF.style.display = "none";
+            document.body.appendChild(elemIF);
+        },
+        onSaveButtonClicked:function () {
+            console.log(123);
+
+        }
+    });
+
+    function launchEditor(id, src) {
+        featherEditor.launch({
+            image: id,
+            url: src
+        });
+        return false;
+    }
+
+</script>
+
+</body>
+</html>

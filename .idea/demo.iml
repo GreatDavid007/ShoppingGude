@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/charts/node_modules/chart.js/src/platforms" />
+      <excludeFolder url="file://$MODULE_DIR$/elm/vue2-elm/node_modules/vue/src/platforms" />
+      <excludeFolder url="file://$MODULE_DIR$/npm项目/node_modules/vue/src/platforms" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="school" />
+    <orderEntry type="module" module-name="odoo" />
+    <orderEntry type="module" module-name="ShoppingGuide" />
+    <orderEntry type="module" module-name="ShoppingGuide" />
+  </component>
+  <component name="TestRunnerService">
+    <option name="PROJECT_TEST_RUNNER" value="Unittests" />
+  </component>
+</module>

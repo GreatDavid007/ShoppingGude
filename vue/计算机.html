@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="editor">
+	<!-- 总计:<input type="number" name="" placeholder="请输入" :value="compiledMarkdown">
+	<br>
+	<input type="number" name="" placeholder="请输入" :value="input">
+	<br>
+	<input type="number" name="" placeholder="请输入" :value="input" ><br>
+	<input type="number" name="" placeholder="请输入" :value="input" @input="update"> -->
+	<input type="number"  id="message" :value="message"><br>
+	<!-- <button>{{message}}</button> -->
+	<div v-for="(i,index) in data">
+		<input type="number" placeholder="请输入" :id="sun[index]" v-model="sun[index]"><br>
+		<input type="number" placeholder="请输入" :id="sun[index]" v-model="sun[index]">
+	</div>
+	
+
+</div>
+	
+</body>
+<script src="../jquery.min.js"></script>
+<script src="vue.js"></script>
+<script type="text/javascript">
+	$(function(){	
+
+		new Vue({
+		  el: '#editor',
+		  data: {
+		  
+		 
+		   	data:{
+		   		0:{'name':'sss'},
+		   		1:{'name':'xiaom'}
+		   	},
+	   	 	// age:'',	
+	   	 	// one:'',
+	   	 	sun:{
+	   	 		0:'',
+	   	 		1:''
+	   	 	}
+		  },
+		  
+		  computed: {
+		   	 	message:function(){
+		   			// var vals = $('#sum').val();
+		   			// console.log(vals);
+		   	 		return Number(this.sun[0])+Number(this.sun[1]);
+	   	 			// return Number(this.sss) + Number(this.xiaom);
+		   	 		
+		   	 	}
+		 
+		  },
+		  methods: {
+		    
+		}
+})
+	})
+</script>
+</html>

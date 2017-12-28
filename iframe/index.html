@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>Control Tower</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body style="margin: 0px;height: 100%;width: 100%;">
+ <div id="buttonPanel" style="position: absolute;left: 25%;z-index:100">
+ <input id="full_screen_open" type="button" value="打开全屏">
+ <input id="full_screen_close" type="button" value="退出全屏" style="display: none">
+ </div>
+ <div id="container" style="display:table;height: 50%;width: 50%;background-color: #004981;position:absolute;left: 25%;">
+ <div style="display:table-cell;height: 50%;width: 50%;text-align: center;vertical-align: middle;border: 2px solid #DDDDDD;">
+  <font id="font" size="30"></font>
+ </div>
+ </div>
+</body>
+<script src="../jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$("#full_screen_open").on("click",function(){
+ /* 获取父类的document */
+ var parentDoc = $(document).parent();
+ /* 定义一个接收元素的变量 */
+ var thisIframe = null;
+ /* 用jQuery遍历父类的所有iframe,找到我引入的那个iframe,
+  假设我不知道是哪个页面要引入我的iframe,但是引入我的iframe的src肯定会有引入这个页面的名字,
+  所以通过这个去检索,一定能找到引入这个页面的iframe,然后把这个iframe的元素全屏化也就是把原来的页面全屏化 */
+ $("iframe",parentDoc).each(function(index,e){
+ if (e.src.indexOf("fullScreenPage.html") > 0) {
+  thisIframe = e;
+  return false;
+ }
+ });
+ requestFullScreen(thisIframe);
+ $("#font").empty();
+ $("#font").text("已打开全屏化");
+});
+var requestFullScreen = function(element) {
+ var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+ if (requestMethod) {
+ requestMethod.call(element);
+ } else if (typeof window.ActiveXObject !== "undefined") {
+ var wscript = new ActiveXObject("WScript.Shell");
+ if (wscript !== null) {
+  wscript.SendKeys("{F11}");
+ }
+ }
+}
+</script>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+    body,html{font-size:12px;padding:2px 0px 0px 3px;margin:0px;background-color:#FFF;word-break:break-all;word-wrap:break-word;height: auto;line-height:20px;width:99%;overflow:scoll; }
+   
+    table,tbody,tr{background-color:#000; width:100%;}
+    td {font-family: Arial, Helvetica, sans-serif;border:0px; background-color:White; padding-left:3px;height:20px}
+    thead td,tfoot td{ text-align:center; font-weight:bold;height:25px;line-height:25px;}
+</style>
+</head>
+ 
+<body>
+<div style="width:600px;height:50px;margin:20px 50px 10px" id="color">颜色：
+<input type='checkbox' value='红色'>红色 <input type='checkbox' value='蓝色'>蓝色 <input type='checkbox' value='绿色'>绿色  <input type='checkbox' value='黄色'>黄色 </div>
+<div style="width:600px;height:50px;margin:10px 50px " id="size">尺码：
+<input type='checkbox' value='33'>33 <input type='checkbox' value='34'>34 <input type='checkbox' value='35'>35  <input type='checkbox' value='36'>36</div>
+<div style="width:600px;height:auto;margin:10px 50px" id='tableDiv'></div>
+</body>
+<script type="text/javascript">
+ 
+(function(){
+var colorDiv = document.getElementById("color");
+var sizeDiv = document.getElementById("size");
+var tableDiv = document.getElementById("tableDiv");
+colorDiv.onclick = sizeDiv.onclick = function(e){
+e= e.srcElement||e.target;
+if(e.tagName=="INPUT" && e.type=="checkbox"){
+createTable();
+}
+};
+function createTable()
+{
+    var colors=colorDiv.getElementsByTagName("input");
+    var sizes=sizeDiv.getElementsByTagName("input");
+    var colorArr=getChecked(colors);
+    var sizeArr=getChecked(sizes);
+    if(colorArr.length==0 || sizeArr.length==0){
+    tableDiv.innerHTML="";
+    return;
+    }
+    var arr=["<table border=0 cellspacing=1><tr><td>颜色</td><td>尺码</td><td>价格</td><td>数量</td><td>编号</td><td>操作</td></tr>"];
+    for(var i=0;i<colorArr.length;i++)
+    {
+        arr.push("<tr><td rowspan="+sizeArr.length+">"+colorArr[i].value+"</td>");
+        for(var j=0;j<sizeArr.length;j++)
+        {
+            if(j>0){
+                arr.push("<tr>");
+            }
+            arr.push("<td>"+sizeArr[j].value+"</td>");
+            arr.push("<td><input></input></td><td><input></input></td><td><input></input></td><td>操作</td></tr>");
+        }
+    }
+    arr.push("</table>");
+    tableDiv.innerHTML=arr.join("");
+}
+ 
+function getChecked(inputs){
+var arr=[];
+for(var i=0;i<inputs.length;i++){
+    if(inputs[i].checked)
+    {
+    arr.push(inputs[i]);
+    }
+ 
+}    return arr;
+}
+})();
+ 
+ 
+</script>
+ 
+</html>
